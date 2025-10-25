@@ -1,35 +1,60 @@
 import argparse
 from openai import OpenAI
+from pydantic import BaseModel
 
 client = OpenAI(
   base_url="https://openrouter.ai/api/v1",
-  api_key="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",
-
+  api_key="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"
 )
 
-def main():
-    # Read the entire content from prompt.txt
+class AiScore(BaseModel):
+    score: float
+    reasons: list[str]
+
+def read_file(filename):
+    #Read and return the content of a file, or None if not found or empty.
     try:
-        with open('prompt.txt', 'r') as f:
-            prompt_content = f.read().strip()
+        with open(filename, 'r') as f:
+            content = f.read().strip()
+        if not content:
+            print(f"Error: {filename} is empty.")
+            return None
+        return content
     except FileNotFoundError:
-        print("Error: prompt.txt not found.")
+        print(f"Error: {filename} not found.")
+        return None
+
+
+def main():
+    # read files
+    prompt_content = read_file('prompt.txt')
+    if prompt_content is None:
         return
-    
-    if not prompt_content:
-        print("Error: prompt.txt is empty.")
+    data_content = read_file('data.txt')
+    if data_content is None:
         return
-    
+
+
     # Send the prompt to OpenAI API
     try:
-        completion = client.chat.completions.create(
-            model="gpt-3.5-turbo",  # Or another model available via OpenRouter
-            messages=[
-                {"role": "user", "content": prompt_content}
-            ]
+        completion = client.responses.parse(
+            model="openai/gpt-oss-20b:free",  # Or another model available via OpenRouter
+            input=[
+                {
+                    "role": "system",
+                    "content": prompt_content
+                    },
+                {
+                    "role": "user",
+                    "content": data_content
+                },
+            ],
+            text_format=AiScore,
+                       
         )
-        response = completion.choices[0].message.content
-        print(response)
+
+        text = completion.output_parsed
+        print(text)
     except Exception as e:
         print(f"Error calling OpenAI API: {e}")
 
