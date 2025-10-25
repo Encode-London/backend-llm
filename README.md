@@ -10,10 +10,28 @@ This project is a command-line interface (CLI) application designed to provide u
 
 ## Installation
 
-Install the virtual environment
+
+Create virtual environment
+
 
 ```
+python -m venv backend-llm-env 
+```
+
+
+
+Install the virtual environment
+
+
+
+Mac:
+```
 source backend-llm-env/bin/activate
+```
+
+Windows:
+```
+\backend-llm-env\bin\activate
 ```
 
 To install the required dependencies, run the following command:
@@ -25,8 +43,10 @@ pip install -r requirements.txt
 ## Usage
 To run the CLI application, execute the following command:
 
+Give prompt in `prompt.txt`
+
 ```
-python src/cli.py
+python src/llm.py
 ```
 
 ## Contributing
