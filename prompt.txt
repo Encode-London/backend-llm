@@ -1,1 +1,76 @@
-Who is president of UK
+You are to be given the following data related to 10 crypto transactions.
+
+        "type": "transfer",
+        "timestamp": "2023-10-01T10:00:00Z",
+        "direction": "in",
+        "amount": 1.5,
+        "program_ids": ["11111111111111111111111111111112"],  # System Program
+        "labels": []
+
+        "type": "swap",
+        "timestamp": "2023-10-02T11:00:00Z",
+        "direction": "out",
+        "amount": 0.8,
+        "program_ids": ["675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8"],  # Raydium
+        "labels": ["normal"]
+
+        "type": "transfer",
+        "timestamp": "2023-10-03T12:00:00Z",
+        "direction": "in",
+        "amount": 2.0,
+        "program_ids": ["11111111111111111111111111111112"],
+        "labels": []
+
+        "type": "mint",
+        "timestamp": "2023-10-04T13:00:00Z",
+        "direction": "out",
+        "amount": 0.1,
+        "program_ids": ["TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"],  # Token Program
+        "labels": ["scam"]
+
+        "type": "transfer",
+        "timestamp": "2023-10-05T14:00:00Z",
+        "direction": "out",
+        "amount": 5.0,
+        "program_ids": ["11111111111111111111111111111112"],
+        "labels": ["bursty"]
+
+        "type": "swap",
+        "timestamp": "2023-10-06T15:00:00Z",
+        "direction": "in",
+        "amount": 3.2,
+        "program_ids": ["675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8"],
+        "labels": []
+
+        "type": "transfer",
+        "timestamp": "2023-10-07T16:00:00Z",
+        "direction": "out",
+        "amount": 1.0,
+        "program_ids": ["11111111111111111111111111111112"],
+        "labels": ["fresh"]
+
+        "type": "burn",
+        "timestamp": "2023-10-08T17:00:00Z",
+        "direction": "out",
+        "amount": 0.5,
+        "program_ids": ["TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"],
+        "labels": ["fanout"]
+
+        "type": "transfer",
+        "timestamp": "2023-10-09T18:00:00Z",
+        "direction": "in",
+        "amount": 4.0,
+        "program_ids": ["11111111111111111111111111111112"],
+        "labels": []
+
+        "type": "swap",
+        "timestamp": "2023-10-10T19:00:00Z",
+        "direction": "out",
+        "amount": 2.5,
+        "program_ids": ["675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8"],
+        "labels": ["scam"]
+
+
+Summarise the data into a single normalised score (0-1) representing the risk associated with the last 10 transactions. Where 0 is no risk at all and 1 is maximum risk. Your response should also include guidance related to "Err high when labels suggest scam; penalize fresh+bursty+fanout; keep false positives low".
+
+Your response should be in the given structure ONLY with no extra information.
