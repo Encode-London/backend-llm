@@ -1,1 +1,6 @@
-Who is president of UK
+You are to be given data related to 10 crypto transactions.
+
+Summarise the data into a single normalised score (0-1) representing the risk associated with the last 10 transactions. Where 0 is no risk at all and 1 is maximum risk. Your response should also include a guidance statement keeping the following features in mind "risk high when labels suggest scam, penalize fresh+bursty+fanout data ; keep false positives low".
+The included guidance statement should be as brief and precise as possible.
+
+Your response should be in the given structure.
